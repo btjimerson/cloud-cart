@@ -23,7 +23,7 @@ By default these microservices use an embedded H2 database in each microservice.
 ### Kubernetes
 
 There is a Helm chart available to install the application. Instructions for using the Helm chart are available [here](https://btjimerson.github.io/btjimerson-charts/).
-
+ 
 The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, override the `payments.stripeApiKey` value in the Helm chart. Make sure you Base64 encode your key in the value:
 ```bash
 echo 'my-key' | base64
