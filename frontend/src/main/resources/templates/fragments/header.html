@@ -3,10 +3,11 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
-                Ashtabula
+                CloudCart
             </a>
             <a href="/checkout" th:if="${includeCart}">
-                <span th:text="${session.cart.size}" th:unless="${session.cart == null}" class="badge bg-primary rounded-pill"></span>
+                <span th:text="${session.cart.size}" th:unless="${session.cart == null}"
+                    class="badge bg-primary rounded-pill"></span>
                 <i class="bi bi-cart-fill" style="font-size: 2rem; color: white;"></i>
             </a>
         </div>

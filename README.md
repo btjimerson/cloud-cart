@@ -1,5 +1,5 @@
 
-# Ashtabula E-commerce Demo Application
+# CloudCart E-commerce Demo Application
 
 This is an example application to demonstrate Microservice constructs, such as:
 
@@ -8,11 +8,7 @@ This is an example application to demonstrate Microservice constructs, such as:
 - Database per microservice design
 - Loose coupling through messaging
 
-![Architecture](images/ashtabula-architecture.png)
-
-## Why the Name 'Ashtabula'?
-
-[Reportedly](https://www.businessinsider.com/amazon-jeff-bezos-chose-company-name-2018-5), Jeff Bezos named his company Amazon because the Amazon River is the largest river in the world, and his company was going to be the largest bookstore in the world. This application isn't very big, so it's named after the [Ashtabula River](https://en.wikipedia.org/wiki/Ashtabula_River), a 40 mile long river in Northeast Ohio.
+![Architecture](images/cloud-cart-architecture.png)
 
 ## Databases
 There are microservices that use a database:

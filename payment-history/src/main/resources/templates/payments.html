@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
                     <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
-                    Ashtabula
+                    CloudCart
                 </a>
             </div>
         </nav>
@@ -23,11 +23,13 @@
         <div class="container">
             <div class="text-center py-5">
                 <img class="d-block mx-auto mb-4" src="/images/shop.png" />
-                <h1 class="display-5 fw-bold text-body-emphasis">Ashtabula</h1>
+                <h1 class="display-5 fw-bold text-body-emphasis">CloudCart</h1>
                 <p class="lead"><em>Because we're not Amazon.</em></p>
             </div>
             <div class="row">
-                <div class="col-10"><h2>All Payments</h2></div>
+                <div class="col-10">
+                    <h2>All Payments</h2>
+                </div>
             </div>
             <table class="table table-hover table-bordered">
                 <thead class="thead-light">
@@ -39,9 +41,10 @@
                 </thead>
                 <tbody>
                     <tr th:each="payment: ${payments}">
-                        <td><a th:href="@{/paymentDetails?id={id}(id=${payment.id})}"><span th:text="${payment.id}" /></a></td>
-                        <td th:text="${#numbers.formatCurrency(payment.amount)} + ' ' + ${payment.currency}"/>
-                        <td th:text="${payment.description}"/>
+                        <td><a th:href="@{/paymentDetails?id={id}(id=${payment.id})}"><span
+                                    th:text="${payment.id}" /></a></td>
+                        <td th:text="${#numbers.formatCurrency(payment.amount)} + ' ' + ${payment.currency}" />
+                        <td th:text="${payment.description}" />
                     </tr>
                 </tbody>
             </table>
