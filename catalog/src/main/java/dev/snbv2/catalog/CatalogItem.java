@@ -1,6 +1,10 @@
 package dev.snbv2.catalog;
 
+import java.util.UUID;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,7 +13,8 @@ import jakarta.persistence.Table;
 public class CatalogItem {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     private String name;
     private String imageSource;
@@ -19,7 +24,7 @@ public class CatalogItem {
     public CatalogItem() {
     }
 
-    public CatalogItem(Integer id, String name, String imageSource, String description, Double amount) {
+    public CatalogItem(UUID id, String name, String imageSource, String description, Double amount) {
         this.id = id;
         this.name = name;
         this.imageSource = imageSource;
@@ -27,11 +32,11 @@ public class CatalogItem {
         this.amount = amount;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -65,6 +70,10 @@ public class CatalogItem {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getIdAsString() {
+        return id == null ? "" : id.toString();
     }
 
     @Override
