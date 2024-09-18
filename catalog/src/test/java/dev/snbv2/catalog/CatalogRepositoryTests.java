@@ -49,7 +49,7 @@ public class CatalogRepositoryTests {
         for (CatalogItem catalogItem : catalogRepository.findAll()) {
 
             LOG.info(String.format("ID type = [%s]", catalogItem.getId().getClass()));
-            Assert.isInstanceOf(UUID.class, catalogItem.getId());
+            Assert.isInstanceOf(Integer.class, catalogItem.getId());
             
             LOG.info(String.format("ID as string type = [%s]", catalogItem.getIdAsString().getClass()));
             Assert.isInstanceOf(String.class, catalogItem.getIdAsString());
