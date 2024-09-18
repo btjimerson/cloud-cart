@@ -1,7 +1,5 @@
 package dev.snbv2.catalog;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +12,7 @@ public class CatalogItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer id;
 
     private String name;
     private String imageSource;
@@ -24,7 +22,7 @@ public class CatalogItem {
     public CatalogItem() {
     }
 
-    public CatalogItem(UUID id, String name, String imageSource, String description, Double amount) {
+    public CatalogItem(Integer id, String name, String imageSource, String description, Double amount) {
         this.id = id;
         this.name = name;
         this.imageSource = imageSource;
@@ -32,11 +30,11 @@ public class CatalogItem {
         this.amount = amount;
     }
 
-    public UUID getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
