@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<div th:replace="~{fragments/head :: head(title='Payment Details')}"></div>
+
+<body>
+    <div class="container px-4 py-5">
+        <div th:replace="~{fragments/header :: header(includeCart=false)}"></div>
+
+        <main>
+            <div class="container">
+                <div th:replace="~{fragments/logo :: logo}"></div>
+
+                <div class="row">
+                    <div class="col-10">
+                        <h2>Payment Details</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">Payment ID:</div>
+                    <div class="col-6"><span th:text="${payment.id}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">Card Number:</div>
+                    <div class="col-6"><span th:text="${payment.cardNumber}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">Expiration Date:</div>
+                    <div class="col-6"><span th:text="${payment.expirationMonth} + '/' + ${payment.expirationYear}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">CVC:</div>
+                    <div class="col-6"><span th:text="${payment.cvc}"></div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">Amount:</div>
+                    <div class="col-6"><span
+                            th:text="${#numbers.formatCurrency(payment.amount)} + ' ' + ${payment.currency}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 themed-grid-col">Description:</div>
+                    <div class="col-6"><span th:text="${payment.description}"></div>
+                </div>
+                <hr class="mb-4" />
+                <div class="row">
+                    <div class="col-10">
+                        <a class="btn btn-primary" role="button" href="/payments">Back to Payment List</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+        <script src="/js/jquery-3.5.1.slim.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+
+</html>
