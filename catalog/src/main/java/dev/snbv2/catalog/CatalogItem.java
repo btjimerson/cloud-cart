@@ -1,17 +1,14 @@
 package dev.snbv2.catalog;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="catalog")
+@Table(name = "catalog")
 public class CatalogItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
@@ -53,7 +50,7 @@ public class CatalogItem {
     public void setImageSource(String imageSource) {
         this.imageSource = imageSource;
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -78,6 +75,5 @@ public class CatalogItem {
     public String toString() {
         return "CatalogItem [amount=" + amount + ", description=" + description + ", id=" + id + ", name=" + name + "]";
     }
-    
-    
+
 }
