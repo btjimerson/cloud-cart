@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +37,18 @@ public class FrontendController {
 
     @Autowired
     RestTemplate restTemplate;
+
+    @ModelAttribute
+    public void populateAppVersion(Model model) {
+        String appVersion = System.getenv("APP_VERSION");
+        LOG.debug(String.format("Setting app version attribute to [%s]", appVersion));
+        model.addAttribute("appVersion", appVersion == null ? "" : appVersion);
+    }
+
+    @GetMapping({ "/", "/index" })
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/item/{id}")
     public String getCatalogItem(@PathVariable("id") Long id, Model model) {

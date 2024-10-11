@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class FrontendAPIController {
 
     private static final Log LOG = LogFactory.getLog(FrontendAPIController.class);
@@ -33,16 +33,18 @@ public class FrontendAPIController {
     @Value("${endpoint.payment-history}")
     private String paymentHistoryEndpoint;
 
+    @Value("${app.version:sup}")
+    private String appVersion;
+
     @Autowired
     RestTemplate restTemplate;
 
     @GetMapping("/catalog/{id}")
     public CatalogItem getCatalogItem(@PathVariable("id") Long id) {
-        
+
         CatalogItem item = restTemplate.getForObject(
-            catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
-       
-        
+                catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
+
         LOG.debug(String.format("Catalog item retrieved = [%s]", item));
 
         return item;
@@ -52,7 +54,7 @@ public class FrontendAPIController {
     public CatalogItem[] getAllCatalogItems() {
 
         CatalogItem[] catalogItems = restTemplate.getForEntity(
-            catalogEndpoint +  "/catalog", CatalogItem[].class).getBody();
+                catalogEndpoint + "/catalog", CatalogItem[].class).getBody();
 
         return catalogItems;
     }
@@ -64,9 +66,9 @@ public class FrontendAPIController {
 
         order.getPayment().setCurrency("usd");
         order.getPayment().setDescription(String.format("Order placed on %s", new Date()));
-        
+
         String result = restTemplate.postForObject(
-            paymentsEndpoint + "/payment", order.getPayment(), String.class);
+                paymentsEndpoint + "/payment", order.getPayment(), String.class);
 
         OrderSummary orderSummary = new OrderSummary();
         orderSummary.setResult(result);
@@ -81,7 +83,7 @@ public class FrontendAPIController {
         orderSummary.setZipCode(order.getBillingAddress().getZipCode());
 
         restTemplate.postForObject(ordersEndpoint + "/order", orderSummary, OrderSummary.class);
-        
+
         return orderSummary;
     }
 
@@ -89,7 +91,7 @@ public class FrontendAPIController {
     public @ResponseBody Payment[] getAllPayments() {
 
         Payment[] payments = restTemplate.getForObject(
-            paymentHistoryEndpoint + "/payments", Payment[].class);
+                paymentHistoryEndpoint + "/payments", Payment[].class);
 
         if (payments != null) {
             LOG.debug(String.format("All payments found = [%s]", payments.toString()));
@@ -98,13 +100,20 @@ public class FrontendAPIController {
     }
 
     @GetMapping("/payments/{id}")
-    public @ResponseBody Payment getPaymentById(@PathVariable(name="id") Long id) {
+    public @ResponseBody Payment getPaymentById(@PathVariable(name = "id") Long id) {
 
         Payment payment = restTemplate.getForObject(
-            paymentHistoryEndpoint + "/payments/{id}", Payment.class, id);
+                paymentHistoryEndpoint + "/payments/{id}", Payment.class, id);
 
         LOG.debug(String.format("Found payment [%s].", payment));
         return payment;
+    }
+
+    @GetMapping("/version")
+    public String getAppVersion() {
+        String returnVersion = String.format("{\"version\": \"%s\"}", appVersion);
+        LOG.debug(String.format("App version = [%s]", returnVersion));
+        return returnVersion;
     }
 
 }

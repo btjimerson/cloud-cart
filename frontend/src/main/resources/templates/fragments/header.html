@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
                 <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
-                CloudCart
+                CloudCart <span th:text="${appVersion}"></span>
+
             </a>
             <a href="/checkout" th:if="${includeCart}">
                 <span th:text="${session.cart.size}" th:unless="${session.cart == null}"
