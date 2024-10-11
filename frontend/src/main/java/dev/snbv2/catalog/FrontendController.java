@@ -39,11 +39,10 @@ public class FrontendController {
 
     @GetMapping("/item/{id}")
     public String getCatalogItem(@PathVariable("id") Long id, Model model) {
-        
+
         CatalogItem item = restTemplate.getForObject(
-            catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
-       
-        
+                catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
+
         LOG.debug(String.format("Catalog item retrieved = [%s]", item));
 
         model.addAttribute("item", item);
@@ -54,7 +53,7 @@ public class FrontendController {
     public String getAllCatalogItems(Model model) {
 
         CatalogItem[] catalogItems = restTemplate.getForEntity(
-            catalogEndpoint +  "/catalog", CatalogItem[].class).getBody();
+                catalogEndpoint + "/catalog", CatalogItem[].class).getBody();
 
         model.addAttribute("catalogItems", catalogItems);
         return "catalog";
@@ -64,14 +63,14 @@ public class FrontendController {
     public String addToCart(@PathVariable("id") Long id, Model model, HttpSession session) {
 
         CatalogItem item = restTemplate.getForObject(
-            catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
-        
+                catalogEndpoint + "/catalog/{id}", CatalogItem.class, id);
+
         LOG.debug(String.format("Catalog item retrieved = [%s]", item));
 
         this.getCart(session).add(item);
 
         CatalogItem[] catalogItems = restTemplate.getForEntity(
-            catalogEndpoint +  "/catalog", CatalogItem[].class).getBody();
+                catalogEndpoint + "/catalog", CatalogItem[].class).getBody();
 
         model.addAttribute("catalogItems", catalogItems);
         if (item != null) {
@@ -82,7 +81,7 @@ public class FrontendController {
 
     @GetMapping("/checkout")
     public String checkout(Model model, HttpSession session) {
-        
+
         Order order = new Order();
         order.setCatalogItems(this.getCart(session));
         order.setOrderTotal(this.getCartTotal(session));
@@ -100,9 +99,9 @@ public class FrontendController {
         order.getPayment().setCurrency("usd");
         order.getPayment().setAmount(this.getCartTotal(session));
         order.getPayment().setDescription(String.format("Order placed on %s", new Date()));
-        
+
         String result = restTemplate.postForObject(
-            paymentsEndpoint + "/payment", order.getPayment(), String.class);
+                paymentsEndpoint + "/payment", order.getPayment(), String.class);
 
         OrderSummary orderSummary = new OrderSummary();
         orderSummary.setAddress(order.getBillingAddress().getAddress());
@@ -116,19 +115,18 @@ public class FrontendController {
         orderSummary.setZipCode(order.getBillingAddress().getZipCode());
 
         OrderSummary savedOrder = restTemplate.postForObject(
-            ordersEndpoint + "/order", orderSummary, OrderSummary.class);
+                ordersEndpoint + "/order", orderSummary, OrderSummary.class);
 
         LOG.debug(String.format("Result of order = [%s]", savedOrder));
 
         if ("succeeded".equalsIgnoreCase(result)) {
             model.addAttribute("result", "Your order was successfully placed.");
             session.removeAttribute("cart");
+        } else {
+            model.addAttribute("result", "There was an error placing your order.  " +
+                    "Please try again later.  The error was " + result);
         }
-        else {
-            model.addAttribute("result", "There was an error placing your order.  " + 
-                "Please try again later.  The error was " + result);
-        }
-        
+
         model.addAttribute("order", order);
         return "orderResult";
     }
@@ -137,7 +135,7 @@ public class FrontendController {
     public String getAllPayments(Model model) {
 
         Payment[] payments = restTemplate.getForObject(
-            paymentHistoryEndpoint + "/payments", Payment[].class);
+                paymentHistoryEndpoint + "/payments", Payment[].class);
         if (payments != null) {
             LOG.debug(String.format("All payments found = [%s]", payments.toString()));
         }
@@ -149,7 +147,7 @@ public class FrontendController {
     public String getPaymentById(@PathVariable("id") Long id, Model model) {
 
         Payment payment = restTemplate.getForObject(
-            paymentHistoryEndpoint + "/payments/{id}", Payment.class, id);
+                paymentHistoryEndpoint + "/payments/{id}", Payment.class, id);
 
         LOG.debug(String.format("Found payment [%s].", payment));
         model.addAttribute("payment", payment);
@@ -160,9 +158,10 @@ public class FrontendController {
         if (session.getAttribute("cart") == null) {
             session.setAttribute("cart", new ArrayList<CatalogItem>());
         }
-        
-        @SuppressWarnings("unchecked") List<CatalogItem> cart = (List<CatalogItem>) session.getAttribute("cart");
-        
+
+        @SuppressWarnings("unchecked")
+        List<CatalogItem> cart = (List<CatalogItem>) session.getAttribute("cart");
+
         return cart;
     }
 
@@ -171,7 +170,9 @@ public class FrontendController {
         List<CatalogItem> cart = this.getCart(session);
         double orderTotal = 0d;
         for (CatalogItem item : cart) {
-            orderTotal += item.getAmount().doubleValue();
+            if (item != null && item.getAmount() != null) {
+                orderTotal += item.getAmount().doubleValue();
+            }
         }
 
         return Double.valueOf(orderTotal);
