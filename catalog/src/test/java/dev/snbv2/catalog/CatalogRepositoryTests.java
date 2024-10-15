@@ -1,10 +1,7 @@
 package dev.snbv2.catalog;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,7 +21,7 @@ public class CatalogRepositoryTests {
 
     @Autowired
     CatalogRepository catalogRepository;
-    
+
     @Test
     void testFindAll() throws Exception {
 
@@ -32,7 +29,7 @@ public class CatalogRepositoryTests {
         for (CatalogItem catalogItem : catalogRepository.findAll()) {
             catalogItems.add(catalogItem);
         }
-        
+
         LOG.info(String.format("All catalog items = [%s]", catalogItems));
 
         Assertions.assertTrue(catalogItems.size() > 0);
@@ -45,12 +42,11 @@ public class CatalogRepositoryTests {
 
     @Test
     void testIdTypes() {
-        List<CatalogItem> catalogItems = new ArrayList<CatalogItem>();
         for (CatalogItem catalogItem : catalogRepository.findAll()) {
 
             LOG.info(String.format("ID type = [%s]", catalogItem.getId().getClass()));
             Assert.isInstanceOf(Integer.class, catalogItem.getId());
-            
+
             LOG.info(String.format("ID as string type = [%s]", catalogItem.getIdAsString().getClass()));
             Assert.isInstanceOf(String.class, catalogItem.getIdAsString());
         }
