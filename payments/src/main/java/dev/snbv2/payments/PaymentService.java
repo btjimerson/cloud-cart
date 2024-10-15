@@ -31,8 +31,7 @@ public class PaymentService {
     }
 
     public String processPayment(Payment payment) throws Exception {
-        LOG.debug(String.format("Stripe API key: [%s]", this.getApiKey().replaceAll("[^-](?=.{4})", "x")));
-        Stripe.apiKey = this.getApiKey();
+        Stripe.apiKey = this.getApiKey().trim();
 
         Map<String, Object> card = new HashMap<>();
         card.put("cvc", payment.getCvc());
