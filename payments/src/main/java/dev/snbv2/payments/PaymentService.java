@@ -31,6 +31,7 @@ public class PaymentService {
     }
 
     public String processPayment(Payment payment) throws Exception {
+        LOG.debug(String.format("Stripe API key: [%s]", this.getApiKey().replaceAll("[^-](?=.{4})", "x")));
         Stripe.apiKey = this.getApiKey();
 
         Map<String, Object> card = new HashMap<>();
@@ -49,8 +50,7 @@ public class PaymentService {
             throw new Exception(e);
         }
 
-        ChargeCreateParams chargeParams = 
-            ChargeCreateParams.builder()
+        ChargeCreateParams chargeParams = ChargeCreateParams.builder()
                 .setAmount(Math.round(payment.getAmount() * 100))
                 .setCurrency(payment.getCurrency())
                 .setSource(token.getId())
@@ -66,5 +66,5 @@ public class PaymentService {
 
         return charge.getStatus();
     }
-    
+
 }
