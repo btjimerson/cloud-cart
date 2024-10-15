@@ -31,37 +31,19 @@ def addToCart(l):
 def checkout(l):
     addToCart(l)
     l.client.post("/order", {
-        "catalogItems": [
-            {
-                "id": 1,
-                "name": "Turtle Beach Recon 200 Headset",
-                "imageSource": None,
-                "description": "Powerful amplified audio: Immerse yourself in your games with rechargeable, battery powered amplified sound from your Xbox and PlayStation",
-                "amount": 49.95,
-                "inStock": True
-            }
-        ],
-        "billingAddress": {
-            "firstName": "Sally",
-            "lastName": "Struthers",
-            "email": "sstruthers@example.com",
-            "address": "1234 Main St",
-            "address2": None,
-            "city": "Des Moines",
-            "state": "IA",
-            "zipCode": "50047"
-        },
-        "payment": {
-            "cardNumber": "4242424242424242",
-            "cvc": "123",
-            "expirationMonth": 1,
-            "expirationYear": 2025,
-            "amount": 49.95,
-            "currency": "usd",
-            "description": "Test API order payment"
-        },
-        "orderTotal": 49.95
-    })
+        "billingAddress.firstName": "Sally",
+        "billingAddress.lastName": "Struthers",
+        "billingAddress.email": "sstruthers@example.com",
+        "billingAddress.address": "1234 Main St.",
+        "billingAddress.city": "Des Moines",
+        "billingAddress.state": "IA",
+        "billingAddress.zipCode": "50047",
+        "payment.cardNumber": "4242424242424242",
+        "payment.expirationMonth": "01",
+        "payment.expirationYear": "29",
+        "payment.cvc": "123"
+    }
+)
 
 class UserBehavior(TaskSet):
 
