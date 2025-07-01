@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title th:text="'Details - Payment ' + ${payment.id}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="/css/application.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container px-4 py-5">
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #053B52">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
+                    CloudCart
+                </a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="text-center py-5">
+                <img class="d-block mx-auto mb-4" src="/images/shop.png" />
+                <h1 class="display-5 fw-bold text-body-emphasis">CloudCart</h1>
+                <p class="lead"><em>Because we're not Amazon.</em></p>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <h2>Payment Details</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">Payment ID:</div>
+                <div class="col-6"><span th:text="${payment.id}"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">Card Number:</div>
+                <div class="col-6"><span th:text="${payment.cardNumber}"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">Expiration Date:</div>
+                <div class="col-6"><span th:text="${payment.expirationMonth} + '/' + ${payment.expirationYear}"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">CVC:</div>
+                <div class="col-6"><span th:text="${payment.cvc}"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">Amount:</div>
+                <div class="col-6"><span
+                        th:text="${#numbers.formatCurrency(payment.amount)} + ' ' + ${payment.currency}"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 themed-grid-col">Description:</div>
+                <div class="col-6"><span th:text="${payment.description}"></div>
+            </div>
+            <hr class="mb-4" />
+            <div class="row">
+                <div class="col-10">
+                    <a class="btn btn-primary" role="button" href="/payments">Back to Payment List</a>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/jquery-3.5.1.slim.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+
+</html>

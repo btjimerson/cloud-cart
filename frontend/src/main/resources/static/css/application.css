@@ -1,0 +1,19 @@
+body {
+    padding-top: 5rem;
+}
+
+.catalog-item {
+    width: auto;
+    height: 200px;
+    border-radius: 20% 0 20% 20%;
+}
+
+.catalog-item-col {
+    margin-bottom: 52px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.am-navbar {
+    background-color: #053B52
+}

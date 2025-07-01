@@ -1,0 +1,18 @@
+<header th:fragment="header(includeCart)">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark am-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
+                CloudCart <span th:text="${appVersion}"></span>
+
+            </a>
+            <span th:if="${includeCart}">
+                <span th:text="${session.cart.size}" th:unless="${session.cart == null}"
+                    class="badge bg-primary rounded-pill"></span>&nbsp;
+                <a href="/checkout" th:if="${(session.cart != null) and (session.cart.size > 0)}">
+                    <i class="bi bi-cart-fill" style="font-size: 1.5rem; color: white;"></i>
+                </a>
+            </span>
+        </div>
+    </nav>
+</header>

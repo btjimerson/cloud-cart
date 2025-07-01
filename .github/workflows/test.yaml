@@ -1,0 +1,37 @@
+name: test
+on:
+  push:
+    branches: [main]
+env:
+  STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+permissions:
+  contents: read
+  packages: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out main branch
+      uses: actions/checkout@v3
+    - name: Set up JDK 24
+      uses: actions/setup-java@v3
+      with:
+        java-version: '24'
+        distribution: 'temurin'
+    - name: Run tests
+      run: | 
+        pushd catalog
+        mvn test
+        popd
+        pushd frontend
+        mvn test
+        popd
+        pushd orders
+        mvn test
+        popd
+        pushd payment-history
+        mvn test
+        popd
+        pushd payments
+        mvn test
+        popd

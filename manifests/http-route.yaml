@@ -1,0 +1,17 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+metadata:
+  name: cloud-cart-frontend
+  namespace: cloud-cart
+  labels:
+    app: cloud-cart
+spec:
+  parentRefs:
+    - name: http
+      namespace: gloo-system
+  hostnames:
+    - "www.cloudcart.com"
+  rules:
+    - backendRefs:
+        - name: frontend-v1
+          port: 8080

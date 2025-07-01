@@ -1,0 +1,133 @@
+name: build-publish
+on:
+  push:
+    tags: 
+     - 'v[0-9]+.[0-9]+.[0-9]+*'
+env:
+  REGISTRY: ghcr.io
+  NAMESPACE: btjimerson
+  CATALOG_IMAGE: cloud-cart-catalog
+  FRONTEND_IMAGE: cloud-cart-frontend
+  ORDERS_IMAGE: cloud-cart-orders
+  PAYMENT_HISTORY_IMAGE: cloud-cart-payment-history
+  PAYMENTS_IMAGE: cloud-cart-payments
+  LOADGENERATOR_IMAGE: cloud-cart-loadgenerator
+permissions:
+  contents: read
+  packages: write
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: Set up Docker buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Log in to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata for catalog
+        id: meta-catalog
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.CATALOG_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push catalog image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./catalog/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-catalog.outputs.tags }}
+          labels: ${{ steps.meta-catalog.outputs.labels }}
+      - name: Extract metadata for frontend
+        id: meta-frontend
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.FRONTEND_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./frontend/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-frontend.outputs.tags }}
+          labels: ${{ steps.meta-frontend.outputs.labels }}
+      - name: Extract metadata for orders
+        id: meta-orders
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.ORDERS_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push orders image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./orders/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-orders.outputs.tags }}
+          labels: ${{ steps.meta-orders.outputs.labels }}
+      - name: Extract metadata for payment-history
+        id: meta-payment-history
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.PAYMENT_HISTORY_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push payment-history image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./payment-history/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-payment-history.outputs.tags }}
+          labels: ${{ steps.meta-payment-history.outputs.labels }}
+      - name: Extract metadata for payments
+        id: meta-payments
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.PAYMENTS_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push payments image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./payments/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-payments.outputs.tags }}
+          labels: ${{ steps.meta-payments.outputs.labels }}
+      - name: Extract metadata for loadgenerator
+        id: meta-loadgenerator
+        uses: docker/metadata-action@v4.1.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.NAMESPACE }}/${{ env.LOADGENERATOR_IMAGE }}
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{major}}.{{minor}}.{{patch}}
+            type=sha
+      - name: Build and push loadgenerator image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./loadgenerator/
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta-loadgenerator.outputs.tags }}
+          labels: ${{ steps.meta-loadgenerator.outputs.labels }}

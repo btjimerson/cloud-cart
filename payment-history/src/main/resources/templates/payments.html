@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>All Payments</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="/css/application.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container px-4 py-5">
+        <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #053B52">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="/images/shop.png" height="24" class="d-inline-block align-text-top">
+                    CloudCart
+                </a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="text-center py-5">
+                <img class="d-block mx-auto mb-4" src="/images/shop.png" />
+                <h1 class="display-5 fw-bold text-body-emphasis">CloudCart</h1>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <h2>All Payments</h2>
+                </div>
+            </div>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Payment ID</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="payment: ${payments}">
+                        <td><a th:href="@{/paymentDetails?id={id}(id=${payment.id})}"><span
+                                    th:text="${payment.id}" /></a></td>
+                        <td th:text="${#numbers.formatCurrency(payment.amount)} + ' ' + ${payment.currency}" />
+                        <td th:text="${payment.description}" />
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="/js/jquery-3.5.1.slim.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+
+</html>

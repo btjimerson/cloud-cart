@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="images/favicon.png" />
+    <link rel="stylesheet" href="/css/application.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container px-4 py-5">
+        <div th:replace="~{fragments/header :: header(includeCart=false)}"></div>
+
+        <div class="container">
+            <div th:replace="~{fragments/logo :: logo}"></div>
+            <div class="row">
+                <div class="col-10">
+                    <h2>Welcome</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-10">
+                    <p class="lead">This is an example application to demonstrate Microservice constructs, such as:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="pt-4">
+                        <ul>
+                            <li>Microservices with Spring Boot</li>
+                            <li>RESTful clients and services</li>
+                            <li>Database per microservice design</li>
+                            <li>Loose coupling through messaging</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <img class="d-block" width="360" src="images/cloud-cart-architecture.png" />
+                </div>
+            </div>
+            <hr class="mb-4" />
+            <div class="row">
+                <div class="col-10">
+                    <a href="/catalog" class="btn btn-primary" role="button">Go To Catalog</a>&nbsp;&nbsp;
+                    <a href="/payments" class="btn btn-secondary" role="button">View Payment History</a>
+                </div>
+            </div>
+
+            <div th:replace="~{fragments/footer :: footer}"></div>
+            <script src="/js/jquery-3.5.1.slim.min.js"></script>
+            <script src="/js/bootstrap.bundle.min.js"></script>
+        </div>
+</body>
+
+</html>
