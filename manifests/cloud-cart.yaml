@@ -115,7 +115,7 @@ spec:
     spec:
       containers:
       - name: catalog
-        image: btjimerson/catalog:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-catalog:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -141,7 +141,7 @@ spec:
     spec:
       containers:
       - name: frontend-v1
-        image: btjimerson/frontend:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -167,7 +167,7 @@ spec:
     spec:
       containers:
       - name: frontend-v2
-        image: btjimerson/frontend:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -210,7 +210,7 @@ spec:
           value: "frontend-v1:8080"
       containers:
       - name: loadgenerator
-        image: btjimerson/loadgenerator:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-loadgenerator:latest
         imagePullPolicy: 
         env:
         - name: FRONTEND_ADDRESS
@@ -243,7 +243,7 @@ spec:
     spec:
       containers:
       - name: orders
-        image: btjimerson/orders:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-orders:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -270,7 +270,7 @@ spec:
     spec:
       containers:
       - name: payment-history
-        image: btjimerson/payment-history:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-payment-history:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -296,7 +296,7 @@ spec:
     spec:
       containers:
       - name: payments
-        image: btjimerson/payments:0.1.0
+        image: ghcr.io/btjimerson/cloud-cart-payments:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
