@@ -26,7 +26,7 @@ The orders project uses the Stripe API to process credit cards. You will need to
 
 ```bash
 kubectl create ns cloud-cart
-kubectl create secret generic -n cloud-cart stripe-secret --from-literal=strip-api-key=<my-key>
+kubectl create secret generic -n cloud-cart stripe-secret --from-literal=stripe-api-key=<my-key>
 ```
 
 You can then use the [manifest](./manifests/cloud-cart.yaml) to install the application:
