@@ -1,0 +1,68 @@
+services:
+  catalog:
+    build:
+      context: .
+      dockerfile: catalog/Dockerfile
+    ports:
+      - "8081:8080"
+
+  orders:
+    build:
+      context: .
+      dockerfile: orders/Dockerfile
+    ports:
+      - "8082:8080"
+
+  rabbitmq:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+
+  payments:
+    build:
+      context: .
+      dockerfile: payments/Dockerfile
+    ports:
+      - "8083:8080"
+    depends_on:
+      - rabbitmq
+    environment:
+      STRIPE_API_KEY: ${STRIPE_API_KEY}
+      RABBITMQ_HOST: rabbitmq
+
+  payment-history:
+    build:
+      context: .
+      dockerfile: payment-history/Dockerfile
+    ports:
+      - "8084:8080"
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBITMQ_HOST: rabbitmq
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - catalog
+      - orders
+      - payments
+      - payment-history
+    environment:
+      endpoint.catalog: http://catalog:8080
+      endpoint.orders: http://orders:8080
+      endpoint.payments: http://payments:8080
+      endpoint.payment-history: http://payment-history:8080
+
+  loadgenerator:
+    build: ./loadgenerator
+    profiles:
+      - loadgen
+    depends_on:
+      - frontend
+    environment:
+      FRONTEND_ADDRESS: frontend:8080

@@ -1,0 +1,2 @@
+locust==2.32.6
+requests==2.32.3

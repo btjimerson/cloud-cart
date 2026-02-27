@@ -1,0 +1,5 @@
+# This file needs to be regenerated with pip-compile after updating requirements.in
+#
+# Direct dependencies:
+locust==2.32.6
+requests==2.32.3
