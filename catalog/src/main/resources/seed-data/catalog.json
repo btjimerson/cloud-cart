@@ -1,352 +1,352 @@
 [
   {
     "id": 100,
-    "name": "Apple AirPods Pro (2nd Generation)",
-    "description": "Premium wireless earbuds featuring active noise cancellation, adaptive transparency mode, and personalized spatial audio. Up to 6 hours of listening time with MagSafe charging case.",
-    "amount": 189.99,
-    "imageSource": "https://m.media-amazon.com/images/I/61SUj2aKoEL._AC_SL1500_.jpg"
+    "name": "Essence Mascara Lash Princess",
+    "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+    "amount": 9.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp"
   },
   {
     "id": 200,
-    "name": "Amazon Fire TV Stick 4K Max",
-    "description": "Powerful streaming media player with Wi-Fi 6E support, Alexa Voice Remote, and access to over 1.5 million movies and TV episodes. Supports Dolby Vision, HDR10+, and Dolby Atmos audio.",
-    "amount": 39.99,
-    "imageSource": "https://m.media-amazon.com/images/I/51CgKGfMelL._AC_SL1000_.jpg"
+    "name": "Eyeshadow Palette with Mirror",
+    "description": "The Eyeshadow Palette with Mirror offers a versatile range of eyeshadow shades for creating stunning eye looks. With a built-in mirror, it's convenient for on-the-go makeup application.",
+    "amount": 19.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp"
   },
   {
     "id": 300,
-    "name": "Anker USB C Charger 40W",
-    "description": "Dual-port USB-C wall charger with PowerIQ 3.0 technology delivering 20W per port. Compact foldable plug design, compatible with iPhone, Samsung Galaxy, iPad, and more.",
-    "amount": 15.99,
-    "imageSource": "https://m.media-amazon.com/images/I/51LM3kwRNYL._AC_SL1500_.jpg"
+    "name": "Powder Canister",
+    "description": "The Powder Canister is a finely milled setting powder designed to set makeup and control shine. With a lightweight and translucent formula, it provides a smooth and matte finish.",
+    "amount": 14.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/thumbnail.webp"
   },
   {
     "id": 400,
-    "name": "Samsung Galaxy Buds FE",
-    "description": "Wireless earbuds with active noise cancellation, 3 microphones, and rich bass-forward sound. IPX2 water-resistant with up to 6 hours of battery life and touch controls.",
-    "amount": 69.99,
-    "imageSource": "https://m.media-amazon.com/images/I/51bRHfV5JZL._AC_SL1500_.jpg"
+    "name": "Red Lipstick",
+    "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+    "amount": 12.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/thumbnail.webp"
   },
   {
     "id": 500,
-    "name": "Logitech C920x HD Pro Webcam",
-    "description": "Full HD 1080p webcam with dual stereo microphones and automatic light correction. Perfect for video calls, streaming, and recording with a 78-degree field of view.",
-    "amount": 59.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71iNwni9TsL._AC_SL1500_.jpg"
+    "name": "Red Nail Polish",
+    "description": "The Red Nail Polish offers a rich and glossy red hue for vibrant and polished nails. With a quick-drying formula, it provides a salon-quality finish at home.",
+    "amount": 8.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/beauty/red-nail-polish/thumbnail.webp"
   },
   {
     "id": 600,
-    "name": "Instant Pot Duo 7-in-1 Electric Pressure Cooker",
-    "description": "Versatile 6-quart programmable cooker that replaces 7 kitchen appliances: pressure cooker, slow cooker, rice cooker, steamer, saute pan, yogurt maker, and warmer. 13 one-touch programs.",
-    "amount": 79.95,
-    "imageSource": "https://m.media-amazon.com/images/I/71V1LdJMBAL._AC_SL1500_.jpg"
+    "name": "Calvin Klein CK One",
+    "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
+    "amount": 49.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/thumbnail.webp"
   },
   {
     "id": 700,
-    "name": "Ninja Professional Plus Blender",
-    "description": "1400-peak-watt motor blender with 72-oz total crushing pitcher, Auto-iQ technology, and four preset programs. Crushes ice, blends frozen fruits, and purees soups with ease.",
-    "amount": 89.99,
-    "imageSource": "https://m.media-amazon.com/images/I/61Bm5vJCYtL._AC_SL1500_.jpg"
+    "name": "Chanel Coco Noir Eau De",
+    "description": "Coco Noir by Chanel is an elegant and mysterious fragrance, featuring notes of grapefruit, rose, and sandalwood. Perfect for evening occasions.",
+    "amount": 129.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/thumbnail.webp"
   },
   {
     "id": 800,
-    "name": "Lodge 10.25 Inch Cast Iron Skillet",
-    "description": "Pre-seasoned cast iron skillet with unmatched heat retention and even heating. Oven safe to any temperature, works on all cooktops including induction. Made in the USA.",
-    "amount": 19.90,
-    "imageSource": "https://m.media-amazon.com/images/I/81QMeiCOJyL._AC_SL1500_.jpg"
+    "name": "Dior J'adore",
+    "description": "J'adore by Dior is a luxurious and floral fragrance, known for its blend of ylang-ylang, rose, and jasmine. It embodies femininity and sophistication.",
+    "amount": 89.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/thumbnail.webp"
   },
   {
     "id": 900,
-    "name": "Keurig K-Classic Coffee Maker",
-    "description": "Single-serve K-Cup pod coffee maker with a 48-oz water reservoir, multiple brew sizes (6, 8, 10 oz), and auto-off feature. Brews a fresh cup in under a minute.",
-    "amount": 79.99,
-    "imageSource": "https://m.media-amazon.com/images/I/81NVaVVWGGL._AC_SL1500_.jpg"
+    "name": "Dolce Shine Eau de",
+    "description": "Dolce Shine by Dolce & Gabbana is a vibrant and fruity fragrance, featuring notes of mango, jasmine, and blonde woods. It's a joyful and youthful scent.",
+    "amount": 69.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/thumbnail.webp"
   },
   {
     "id": 1000,
-    "name": "OXO Good Grips 11-Piece Everyday Kitchen Tool Set",
-    "description": "Complete cooking utensil set including tongs, spatula, ladle, spoon, and more. Soft, non-slip handles and heat-resistant nylon heads safe for nonstick cookware.",
-    "amount": 49.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71lBo3ZXJFL._AC_SL1500_.jpg"
+    "name": "Gucci Bloom Eau de",
+    "description": "Gucci Bloom by Gucci is a floral and captivating fragrance, with notes of tuberose, jasmine, and Rangoon creeper. It's a modern and romantic scent.",
+    "amount": 79.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/thumbnail.webp"
   },
   {
     "id": 1100,
-    "name": "Stanley Quencher H2.0 FlowState Tumbler 40 oz",
-    "description": "Double-wall vacuum insulated tumbler that keeps drinks cold for 11 hours and iced for 2 days. Features a rotating three-position lid and ergonomic handle. Dishwasher safe.",
-    "amount": 35.00,
-    "imageSource": "https://m.media-amazon.com/images/I/71YiJGCYVkL._AC_SL1500_.jpg"
+    "name": "Annibale Colombo Bed",
+    "description": "The Annibale Colombo Bed is a luxurious and elegant bed frame, crafted with high-quality materials for a comfortable and stylish bedroom.",
+    "amount": 1899.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/thumbnail.webp"
   },
   {
     "id": 1200,
-    "name": "Fitbit Charge 6 Fitness Tracker",
-    "description": "Advanced fitness tracker with built-in GPS, heart rate monitoring, sleep tracking, and 40+ exercise modes. 7-day battery life and water-resistant to 50 meters.",
-    "amount": 99.95,
-    "imageSource": "https://m.media-amazon.com/images/I/71RJROz6BmL._AC_SL1500_.jpg"
+    "name": "Annibale Colombo Sofa",
+    "description": "The Annibale Colombo Sofa is a sophisticated and comfortable seating option, featuring exquisite design and premium upholstery for your living room.",
+    "amount": 2499.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp"
   },
   {
     "id": 1300,
-    "name": "Manduka PRO Yoga Mat 71-Inch",
-    "description": "Professional-grade 6mm thick yoga mat with dense cushioning and superior joint protection. Closed-cell surface prevents sweat from seeping in. Lifetime guarantee.",
-    "amount": 92.00,
-    "imageSource": "https://m.media-amazon.com/images/I/71MLHIY3fCL._AC_SL1500_.jpg"
+    "name": "Bedside Table African Cherry",
+    "description": "The Bedside Table in African Cherry is a stylish and functional addition to your bedroom, providing convenient storage space and a touch of elegance.",
+    "amount": 299.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/thumbnail.webp"
   },
   {
     "id": 1400,
-    "name": "Under Armour Adult Hustle 5.0 Backpack",
-    "description": "Durable water-repellent backpack with UA Storm technology, soft-lined laptop sleeve fitting up to 15-inch laptops, and multiple organization pockets. Ergonomic shoulder straps.",
-    "amount": 40.00,
-    "imageSource": "https://m.media-amazon.com/images/I/81liiNS2vFL._AC_SL1500_.jpg"
+    "name": "Knoll Saarinen Executive Conference Chair",
+    "description": "The Knoll Saarinen Executive Conference Chair is a modern and ergonomic chair, perfect for your office or conference room with its timeless design.",
+    "amount": 499.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/thumbnail.webp"
   },
   {
     "id": 1500,
-    "name": "Speedo Unisex Adult Swim Goggles Vanquisher 2.0",
-    "description": "Competition swim goggles with panoramic anti-fog lens for clear wide vision. UV protection, flexible silicone seal, and speed-fit clip for easy adjustment.",
-    "amount": 14.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71bKSN7jDgL._AC_SL1500_.jpg"
+    "name": "Wooden Bathroom Sink With Mirror",
+    "description": "The Wooden Bathroom Sink with Mirror is a unique and stylish addition to your bathroom, featuring a wooden sink countertop and a matching mirror.",
+    "amount": 799.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/thumbnail.webp"
   },
   {
     "id": 1600,
-    "name": "Maybelline Lash Sensational Sky High Mascara",
-    "description": "Lengthening and volumizing mascara with a flex tower brush for reaching every lash. Buildable formula delivers a full fan-out effect without clumping. Washable formula.",
-    "amount": 8.98,
-    "imageSource": "https://m.media-amazon.com/images/I/61jT76ZSMPL._SL1500_.jpg"
+    "name": "Apple",
+    "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+    "amount": 1.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/apple/thumbnail.webp"
   },
   {
     "id": 1700,
-    "name": "CeraVe Moisturizing Cream",
-    "description": "Rich, non-greasy moisturizer with 3 essential ceramides and hyaluronic acid. Developed with dermatologists, fragrance-free and suitable for dry to very dry skin. 19-oz jar.",
-    "amount": 16.08,
-    "imageSource": "https://m.media-amazon.com/images/I/61S7BrCBj7L._SL1000_.jpg"
+    "name": "Beef Steak",
+    "description": "High-quality beef steak, great for grilling or cooking to your preferred level of doneness.",
+    "amount": 12.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/beef-steak/thumbnail.webp"
   },
   {
     "id": 1800,
-    "name": "Revlon One-Step Volumizer PLUS Hair Dryer and Styler",
-    "description": "2-in-1 hair dryer and volumizer hot air brush that delivers salon-worthy blowouts at home. Ionic technology reduces frizz while the oval brush design smooths hair.",
-    "amount": 27.09,
-    "imageSource": "https://m.media-amazon.com/images/I/71sR-CcANyL._SL1500_.jpg"
+    "name": "Cat Food",
+    "description": "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
+    "amount": 8.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/cat-food/thumbnail.webp"
   },
   {
     "id": 1900,
-    "name": "Neutrogena Hydro Boost Water Gel Moisturizer",
-    "description": "Lightweight water-gel face moisturizer with hyaluronic acid that instantly quenches dry skin. Oil-free, non-comedogenic, and absorbs quickly for smooth, supple skin.",
-    "amount": 16.97,
-    "imageSource": "https://m.media-amazon.com/images/I/71TDSxracML._SL1500_.jpg"
+    "name": "Chicken Meat",
+    "description": "Fresh and tender chicken meat, suitable for various culinary preparations.",
+    "amount": 9.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/thumbnail.webp"
   },
   {
     "id": 2000,
-    "name": "Olaplex No. 3 Hair Perfector",
-    "description": "At-home bond-building treatment that reduces breakage, strengthens hair, and restores healthy appearance. Patented technology works on all hair types for visibly stronger, shinier hair.",
-    "amount": 28.00,
-    "imageSource": "https://m.media-amazon.com/images/I/61dMUEHHJnL._SL1500_.jpg"
+    "name": "Cooking Oil",
+    "description": "Versatile cooking oil suitable for frying, sautéing, and various culinary applications.",
+    "amount": 4.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/cooking-oil/thumbnail.webp"
   },
   {
     "id": 2100,
-    "name": "LEGO Classic Large Creative Brick Box",
-    "description": "790-piece building set with 33 different colors of LEGO bricks in a convenient storage box. Includes windows, doors, wheels, eyes, and a green baseplate for endless creative building.",
-    "amount": 42.49,
-    "imageSource": "https://m.media-amazon.com/images/I/81dMfHJfMLL._AC_SL1500_.jpg"
+    "name": "Cucumber",
+    "description": "Crisp and hydrating cucumbers, ideal for salads, snacks, or as a refreshing side.",
+    "amount": 1.49,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/cucumber/thumbnail.webp"
   },
   {
     "id": 2200,
-    "name": "Play-Doh Modeling Compound 10-Pack",
-    "description": "Set of 10 two-ounce cans of classic Play-Doh in assorted colors. Non-toxic modeling compound for creative play, squishing, and shaping. Ages 2 and up.",
-    "amount": 7.99,
-    "imageSource": "https://m.media-amazon.com/images/I/81TmhQMIKSL._AC_SL1500_.jpg"
+    "name": "Dog Food",
+    "description": "Specially formulated dog food designed to provide essential nutrients for your canine companion.",
+    "amount": 10.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/dog-food/thumbnail.webp"
   },
   {
     "id": 2300,
-    "name": "Monopoly Classic Board Game",
-    "description": "The classic family board game of buying, selling, and trading properties. Includes game board, 8 tokens, 28 title deed cards, play money, and dice. For 2-8 players ages 8+.",
-    "amount": 19.82,
-    "imageSource": "https://m.media-amazon.com/images/I/81gC7lijTVL._AC_SL1500_.jpg"
+    "name": "Eggs",
+    "description": "Fresh eggs, a versatile ingredient for baking, cooking, or breakfast.",
+    "amount": 2.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/eggs/thumbnail.webp"
   },
   {
     "id": 2400,
-    "name": "Magna-Tiles Clear Colors 100-Piece Set",
-    "description": "Magnetic building tiles in translucent colors for open-ended creative play. STEM-approved toy that develops spatial awareness and fine motor skills. Compatible with all Magna-Tiles sets.",
-    "amount": 89.99,
-    "imageSource": "https://m.media-amazon.com/images/I/81vdBqRCQKL._AC_SL1500_.jpg"
+    "name": "Fish Steak",
+    "description": "Quality fish steak, suitable for grilling, baking, or pan-searing.",
+    "amount": 14.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/fish-steak/thumbnail.webp"
   },
   {
     "id": 2500,
-    "name": "Hot Wheels 20-Car Pack",
-    "description": "Set of 20 die-cast Hot Wheels vehicles in 1:64 scale with authentic decos and cool designs. Great for racing, collecting, and imaginative play. Styles may vary.",
-    "amount": 21.99,
-    "imageSource": "https://m.media-amazon.com/images/I/81G1Dp5J8HL._AC_SL1500_.jpg"
+    "name": "Green Bell Pepper",
+    "description": "Fresh and vibrant green bell pepper, perfect for adding color and flavor to your dishes.",
+    "amount": 1.29,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/green-bell-pepper/thumbnail.webp"
   },
   {
     "id": 2600,
-    "name": "iRobot Roomba 694 Robot Vacuum",
-    "description": "Wi-Fi connected robot vacuum with personalized cleaning suggestions. 3-stage cleaning system lifts dirt, debris, and pet hair from carpets and hard floors. Works with Alexa.",
-    "amount": 179.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71yFhIbaYZL._AC_SL1500_.jpg"
+    "name": "Green Chili Pepper",
+    "description": "Spicy green chili pepper, ideal for adding heat to your favorite recipes.",
+    "amount": 0.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/thumbnail.webp"
   },
   {
     "id": 2700,
-    "name": "Yankee Candle Large Jar Candle - Vanilla Cupcake",
-    "description": "Premium soy-wax blend candle with rich vanilla cupcake fragrance. Burns for up to 150 hours with a natural fiber wick for consistent scent throw throughout the room.",
-    "amount": 16.88,
-    "imageSource": "https://m.media-amazon.com/images/I/71dVGhDaz6L._AC_SL1500_.jpg"
+    "name": "Honey Jar",
+    "description": "Pure and natural honey in a convenient jar, perfect for sweetening beverages or drizzling over food.",
+    "amount": 6.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/honey-jar/thumbnail.webp"
   },
   {
     "id": 2800,
-    "name": "Beckham Hotel Collection Bed Pillows (2-Pack)",
-    "description": "Premium gel-filled pillows with fade and stain-resistant cover. Luxuriously soft with gel fiber filling for optimal comfort and support. Machine washable, queen size.",
-    "amount": 49.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71kz7-HBXBL._AC_SL1500_.jpg"
+    "name": "Ice Cream",
+    "description": "Creamy and delicious ice cream, available in various flavors for a delightful treat.",
+    "amount": 5.49,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/thumbnail.webp"
   },
   {
     "id": 2900,
-    "name": "Govee Smart LED Strip Lights 65.6ft",
-    "description": "Wi-Fi RGB LED strip lights with app control, music sync, and Alexa/Google Assistant compatibility. 16 million colors and 64 scene modes for room decoration.",
-    "amount": 29.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71IYEajOtCL._AC_SL1500_.jpg"
+    "name": "Juice",
+    "description": "Refreshing fruit juice, packed with vitamins and great for staying hydrated.",
+    "amount": 3.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/juice/thumbnail.webp"
   },
   {
     "id": 3000,
-    "name": "Utopia Towels Cotton Bath Towels Set (8-Pack)",
-    "description": "100% ring-spun cotton towels including 2 bath towels, 2 hand towels, and 4 washcloths. Soft, absorbent, and quick-drying. Machine washable and tumble dry friendly.",
-    "amount": 29.99,
-    "imageSource": "https://m.media-amazon.com/images/I/91hVSEo5XML._AC_SL1500_.jpg"
+    "name": "Kiwi",
+    "description": "Nutrient-rich kiwi, perfect for snacking or adding a tropical twist to your dishes.",
+    "amount": 2.49,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp"
   },
   {
     "id": 3100,
-    "name": "IRIS USA Top Entry Cat Litter Box",
-    "description": "Enclosed top-entry litter box with grooved lid that catches litter from paws. Large interior space with rounded corners for easy cleaning. Includes scoop.",
-    "amount": 21.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71T5p1D4KiL._AC_SL1500_.jpg"
+    "name": "Lemon",
+    "description": "Zesty and tangy lemons, versatile for cooking, baking, or making refreshing beverages.",
+    "amount": 0.79,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/lemon/thumbnail.webp"
   },
   {
     "id": 3200,
-    "name": "KONG Classic Dog Toy, Large",
-    "description": "Ultra-durable natural rubber dog toy with unpredictable bounce for interactive play. Hollow center can be stuffed with treats for extended engagement. Veterinarian recommended.",
-    "amount": 13.99,
-    "imageSource": "https://m.media-amazon.com/images/I/71EQrmEMypL._AC_SL1500_.jpg"
+    "name": "Milk",
+    "description": "Fresh and nutritious milk, a staple for various recipes and daily consumption.",
+    "amount": 3.49,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/milk/thumbnail.webp"
   },
   {
     "id": 3300,
-    "name": "Purina Pro Plan High Protein Dog Food",
-    "description": "Premium dry dog food with real chicken as the first ingredient. Formulated with probiotics for digestive and immune health. 35-pound bag for adult dogs.",
-    "amount": 54.48,
-    "imageSource": "https://m.media-amazon.com/images/I/71Wxi-ABl4L._AC_SL1500_.jpg"
+    "name": "Mulberry",
+    "description": "Sweet and juicy mulberries, perfect for snacking or adding to desserts and cereals.",
+    "amount": 4.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/mulberry/thumbnail.webp"
   },
   {
     "id": 3400,
-    "name": "Furminator Undercoat deShedding Tool for Dogs",
-    "description": "Professional grooming tool that reaches through topcoat to safely remove loose undercoat hair. Stainless steel edge, ergonomic handle, and FURejector button for easy hair release.",
-    "amount": 24.52,
-    "imageSource": "https://m.media-amazon.com/images/I/81i7FpW0JjL._AC_SL1500_.jpg"
+    "name": "Nescafe Coffee",
+    "description": "Quality coffee from Nescafe, available in various blends for a rich and satisfying cup.",
+    "amount": 7.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/thumbnail.webp"
   },
   {
     "id": 3500,
-    "name": "PetSafe Easy Walk Dog Harness",
-    "description": "No-pull dog harness with front chest leash attachment that naturally discourages pulling. Padded belly strap for comfort and quick-snap buckles for easy on/off. Medium size.",
-    "amount": 22.95,
-    "imageSource": "https://m.media-amazon.com/images/I/71HQ+2rmqeL._AC_SL1500_.jpg"
+    "name": "Potatoes",
+    "description": "Versatile and starchy potatoes, great for roasting, mashing, or as a side dish.",
+    "amount": 2.29,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/potatoes/thumbnail.webp"
   },
   {
     "id": 3600,
-    "name": "Sharpie Permanent Markers 24-Count Pack",
-    "description": "Assorted color fine-point permanent markers with quick-drying, fade-resistant ink. Bold writing on most surfaces including plastic, metal, and glass. AP certified non-toxic.",
-    "amount": 14.47,
-    "imageSource": "https://m.media-amazon.com/images/I/81vb5bN3YUL._AC_SL1500_.jpg"
+    "name": "Protein Powder",
+    "description": "Nutrient-packed protein powder, ideal for supplementing your diet with essential proteins.",
+    "amount": 19.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/protein-powder/thumbnail.webp"
   },
   {
     "id": 3700,
-    "name": "AmazonBasics Mesh Desk Organizer",
-    "description": "5-compartment desktop organizer with mesh construction for optimal ventilation. Includes drawer, pen holder, and file sections. Keeps workspace tidy and supplies accessible.",
-    "amount": 15.29,
-    "imageSource": "https://m.media-amazon.com/images/I/81SGbF5FSEL._AC_SL1500_.jpg"
+    "name": "Red Onions",
+    "description": "Flavorful and aromatic red onions, perfect for adding depth to your savory dishes.",
+    "amount": 1.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/red-onions/thumbnail.webp"
   },
   {
     "id": 3800,
-    "name": "HP 63 Original Ink Cartridge Combo (Black & Tri-Color)",
-    "description": "Genuine HP ink cartridge 2-pack with black and tri-color cartridges. Produces sharp text and vivid graphics. Compatible with HP DeskJet, ENVY, and OfficeJet printers.",
-    "amount": 37.89,
-    "imageSource": "https://m.media-amazon.com/images/I/71tn5lISdwL._AC_SL1500_.jpg"
+    "name": "Rice",
+    "description": "High-quality rice, a staple for various cuisines and a versatile base for many dishes.",
+    "amount": 5.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/rice/thumbnail.webp"
   },
   {
     "id": 3900,
-    "name": "Post-it Super Sticky Notes 15-Pad Pack",
-    "description": "Brightly colored 3x3 inch sticky notes with 2X the sticking power. Stick securely to more surfaces and remove cleanly. 15 pads, 45 sheets per pad.",
-    "amount": 18.98,
-    "imageSource": "https://m.media-amazon.com/images/I/81XGWN0+mHL._AC_SL1500_.jpg"
+    "name": "Soft Drinks",
+    "description": "Assorted soft drinks in various flavors, perfect for refreshing beverages.",
+    "amount": 1.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/soft-drinks/thumbnail.webp"
   },
   {
     "id": 4000,
-    "name": "Swingline Stapler, 747 Classic Desktop",
-    "description": "All-metal construction desktop stapler with open channel loading and non-skid rubber base. Staples up to 20 sheets at a time. Built to last with die-cast metal design.",
-    "amount": 12.49,
-    "imageSource": "https://m.media-amazon.com/images/I/61GYJLS62+L._AC_SL1500_.jpg"
+    "name": "Strawberry",
+    "description": "Sweet and succulent strawberries, great for snacking, desserts, or blending into smoothies.",
+    "amount": 3.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/strawberry/thumbnail.webp"
   },
   {
     "id": 4100,
-    "name": "Chemical Guys Car Wash Soap and Shampoo",
-    "description": "Premium car wash concentrate with high-foaming formula that safely lifts dirt and grime without stripping wax or sealant. pH balanced and biodegradable. 16-oz bottle.",
-    "amount": 9.97,
-    "imageSource": "https://m.media-amazon.com/images/I/81vfGADTvTL._AC_SL1500_.jpg"
+    "name": "Tissue Paper Box",
+    "description": "Convenient tissue paper box for everyday use, providing soft and absorbent tissues.",
+    "amount": 2.49,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/thumbnail.webp"
   },
   {
     "id": 4200,
-    "name": "NOCO Boost Plus GB40 Jump Starter",
-    "description": "1000-amp portable lithium-ion car battery jump starter for up to 6-liter gas and 3-liter diesel engines. Features USB power bank, LED flashlight, and compact design.",
-    "amount": 99.95,
-    "imageSource": "https://m.media-amazon.com/images/I/71C5IKTH9TL._AC_SL1500_.jpg"
+    "name": "Water",
+    "description": "Pure and refreshing bottled water, essential for staying hydrated throughout the day.",
+    "amount": 0.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/groceries/water/thumbnail.webp"
   },
   {
     "id": 4300,
-    "name": "Armor All Car Interior Cleaner Wipes (50-Count)",
-    "description": "Pre-moistened cleaning wipes that safely remove dust, dirt, and grime from dashboards, consoles, door panels, and steering wheels. Leaves a matte finish without greasy residue.",
-    "amount": 6.97,
-    "imageSource": "https://m.media-amazon.com/images/I/81dAm85DLNL._AC_SL1500_.jpg"
+    "name": "Decoration Swing",
+    "description": "The Decoration Swing is a charming addition to your home decor. Crafted with intricate details, it adds a touch of elegance and whimsy to any room.",
+    "amount": 59.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/thumbnail.webp"
   },
   {
     "id": 4400,
-    "name": "Meguiar's Ultimate Liquid Wax",
-    "description": "Advanced synthetic polymer wax that provides long-lasting protection and a brilliant high-gloss finish. Easy to apply and remove with ThinFilm technology. 16-oz bottle.",
-    "amount": 18.47,
-    "imageSource": "https://m.media-amazon.com/images/I/81O-YL9YorL._AC_SL1500_.jpg"
+    "name": "Family Tree Photo Frame",
+    "description": "The Family Tree Photo Frame is a sentimental and stylish way to display your cherished family memories. With multiple photo slots, it tells the story of your loved ones.",
+    "amount": 29.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/home-decoration/family-tree-photo-frame/thumbnail.webp"
   },
   {
     "id": 4500,
-    "name": "Garmin Dash Cam Mini 2",
-    "description": "Ultra-compact dash camera with 1080p HD recording, 140-degree field of view, and voice control. Features cloud connectivity, incident detection, and parking surveillance mode.",
-    "amount": 119.99,
-    "imageSource": "https://m.media-amazon.com/images/I/61sFVHe8YaL._AC_SL1500_.jpg"
+    "name": "House Showpiece Plant",
+    "description": "The House Showpiece Plant is an artificial plant that brings a touch of nature to your home without the need for maintenance. It adds greenery and style to any space.",
+    "amount": 39.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/thumbnail.webp"
   },
   {
     "id": 4600,
-    "name": "DEWALT 20V MAX Cordless Drill/Driver Kit",
-    "description": "Compact and lightweight drill/driver with 300 unit watts of power, 2-speed transmission (0-450/0-1500 RPM), and 1/2-inch ratcheting chuck. Includes battery, charger, and kit bag.",
-    "amount": 99.00,
-    "imageSource": "https://m.media-amazon.com/images/I/71FBPQz0a8L._AC_SL1500_.jpg"
+    "name": "Plant Pot",
+    "description": "The Plant Pot is a stylish container for your favorite plants. With a sleek design, it complements your indoor or outdoor garden, adding a modern touch to your plant display.",
+    "amount": 14.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/thumbnail.webp"
   },
   {
     "id": 4700,
-    "name": "CRAFTSMAN Mechanics Tool Set (230-Piece)",
-    "description": "Comprehensive mechanics tool set with 72-tooth ratchets, SAE and metric sockets, combination wrenches, and hex keys. Chrome finish for corrosion resistance. Includes hard case.",
-    "amount": 149.00,
-    "imageSource": "https://m.media-amazon.com/images/I/81xdNJkMIqL._AC_SL1500_.jpg"
+    "name": "Table Lamp",
+    "description": "The Table Lamp is a functional and decorative lighting solution for your living space. With a modern design, it provides both ambient and task lighting, enhancing the atmosphere.",
+    "amount": 49.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/thumbnail.webp"
   },
   {
     "id": 4800,
-    "name": "Gorilla Heavy Duty Construction Adhesive",
-    "description": "All-purpose construction adhesive with 100% tough strength for indoor and outdoor projects. Bonds wood, stone, metal, ceramic, and more. Water-resistant and paintable.",
-    "amount": 5.97,
-    "imageSource": "https://m.media-amazon.com/images/I/71QAa9OJh3L._AC_SL1500_.jpg"
+    "name": "Bamboo Spatula",
+    "description": "The Bamboo Spatula is a versatile kitchen tool made from eco-friendly bamboo. Ideal for flipping, stirring, and serving various dishes.",
+    "amount": 7.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/thumbnail.webp"
   },
   {
     "id": 4900,
-    "name": "Milwaukee 25ft Compact Tape Measure",
-    "description": "Heavy-duty tape measure with EXO360 blade technology and nylon bond coating. Features a compact frame, magnetic tip, and finger stop for one-handed operation.",
-    "amount": 19.97,
-    "imageSource": "https://m.media-amazon.com/images/I/71-xjbWoLFL._AC_SL1500_.jpg"
+    "name": "Black Aluminium Cup",
+    "description": "The Black Aluminium Cup is a stylish and durable cup suitable for both hot and cold beverages. Its sleek black design adds a modern touch to your drinkware collection.",
+    "amount": 5.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/thumbnail.webp"
   },
   {
     "id": 5000,
-    "name": "BLACK+DECKER Random Orbit Sander",
-    "description": "Compact 2-amp orbital sander with 12,000 OPM for smooth finishing on wood, metal, and plastic. Hook-and-loop system for easy paper changes. Includes dust collection bag.",
-    "amount": 29.97,
-    "imageSource": "https://m.media-amazon.com/images/I/71j1IXcjJBL._AC_SL1500_.jpg"
+    "name": "Black Whisk",
+    "description": "The Black Whisk is a kitchen essential for whisking and beating ingredients. Its ergonomic handle and sleek design make it a practical and stylish tool.",
+    "amount": 9.99,
+    "imageSource": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/thumbnail.webp"
   }
 ]
