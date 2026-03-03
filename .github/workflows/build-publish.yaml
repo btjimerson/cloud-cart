@@ -16,16 +16,22 @@ jobs:
         include:
           - service: catalog
             image: cloud-cart-catalog
+            context: .
           - service: frontend
             image: cloud-cart-frontend
+            context: .
           - service: orders
             image: cloud-cart-orders
+            context: .
           - service: order-history
             image: cloud-cart-order-history
+            context: .
           - service: payments
             image: cloud-cart-payments
+            context: .
           - service: loadgenerator
             image: cloud-cart-loadgenerator
+            context: ./loadgenerator
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,7 +55,7 @@ jobs:
       - name: Build and push ${{ matrix.service }} image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ matrix.context }}
           file: ./${{ matrix.service }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
