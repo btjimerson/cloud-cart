@@ -1,6 +1,0 @@
-target/
-.mvn/
-.git/
-.gitignore
-*.md
-.DS_Store
