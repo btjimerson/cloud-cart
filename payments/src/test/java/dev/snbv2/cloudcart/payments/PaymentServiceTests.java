@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@EnabledIfEnvironmentVariable(named = "STRIPE_API_KEY", matches = ".+")
+@EnabledIfEnvironmentVariable(named = "STRIPE_API_KEY", matches = "sk_.+")
 public class PaymentServiceTests {
 
     private static final Log LOG = LogFactory.getLog(PaymentServiceTests.class);

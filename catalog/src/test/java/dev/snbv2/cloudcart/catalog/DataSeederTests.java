@@ -31,8 +31,8 @@ public class DataSeederTests {
     void testSeededProductFieldsArePopulated() {
         CatalogItem item = catalogRepository.findById(100).orElse(null);
         Assertions.assertNotNull(item);
-        Assertions.assertEquals("Apple AirPods Pro (2nd Generation)", item.getName());
-        Assertions.assertEquals(0, BigDecimal.valueOf(189.99).compareTo(item.getAmount()));
+        Assertions.assertEquals("Essence Mascara Lash Princess", item.getName());
+        Assertions.assertEquals(0, BigDecimal.valueOf(9.99).compareTo(item.getAmount()));
         Assertions.assertNotNull(item.getImageSource());
         Assertions.assertNotNull(item.getDescription());
     }

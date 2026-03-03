@@ -25,7 +25,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaymentService {
 
-    @Value("#{environment.STRIPE_API_KEY}")
+    @Value("${STRIPE_API_KEY:}")
     String apiKey;
 
     /**

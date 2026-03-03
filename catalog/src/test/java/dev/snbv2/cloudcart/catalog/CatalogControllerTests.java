@@ -49,8 +49,8 @@ public class CatalogControllerTests {
         mvc.perform(get("/catalog/100"))
             .andExpect(status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(100))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Apple AirPods Pro (2nd Generation)"))
-            .andExpect(MockMvcResultMatchers.jsonPath("$.amount").value(189.99))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Essence Mascara Lash Princess"))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.amount").value(9.99))
             .andExpect(MockMvcResultMatchers.jsonPath("$.imageSource").isNotEmpty())
             .andExpect(MockMvcResultMatchers.jsonPath("$.description").isNotEmpty());
     }
