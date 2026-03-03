@@ -1,5 +1,7 @@
 package dev.snbv2.cloudcart.orders;
 
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,22 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-/**
- * REST controller that exposes endpoints for creating and retrieving orders.
- */
 @CommonsLog
 @RestController
 public class OrderController {
 
     private final OrderRepository orderRepository;
+    private final OrderMessageService orderMessageService;
 
-    /**
-     * Constructs the controller with the required order repository.
-     *
-     * @param orderRepository the order repository
-     */
-    public OrderController(OrderRepository orderRepository) {
+    public OrderController(OrderRepository orderRepository, OrderMessageService orderMessageService) {
         this.orderRepository = orderRepository;
+        this.orderMessageService = orderMessageService;
     }
 
     /**
@@ -62,6 +58,16 @@ public class OrderController {
 
         order = orderRepository.save(order);
         log.debug(String.format("Saved order [%s]", order));
+
+        OrderPlacedEvent event = new OrderPlacedEvent(
+                order.getCorrelationId(),
+                Instant.now().toString(),
+                order.getAmount(),
+                1,
+                "PLACED"
+        );
+        orderMessageService.sendMessage(event);
+
         return order;
 
     }

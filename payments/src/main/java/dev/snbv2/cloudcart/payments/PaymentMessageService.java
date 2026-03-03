@@ -4,12 +4,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.apachecommons.CommonsLog;
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 
-/**
- * Service that publishes payment information to a RabbitMQ message queue.
- */
 @CommonsLog
 @Service
 public class PaymentMessageService {
@@ -17,33 +15,30 @@ public class PaymentMessageService {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private final AmqpTemplate amqpTemplate;
+    private final FanoutExchange fanoutExchange;
 
-    /**
-     * Constructs a PaymentMessageService with the required AMQP template.
-     *
-     * @param amqpTemplate the AMQP template for sending messages
-     */
-    public PaymentMessageService(AmqpTemplate amqpTemplate) {
+    public PaymentMessageService(AmqpTemplate amqpTemplate, FanoutExchange fanoutExchange) {
         this.amqpTemplate = amqpTemplate;
+        this.fanoutExchange = fanoutExchange;
     }
 
-    /**
-     * Serializes the payment to JSON and sends it to the payments message queue.
-     *
-     * @param payment the payment to serialize and send
-     */
     public void sendMessage(Payment payment) {
 
-        String paymentJson = null;
+        PaymentProcessedEvent event = new PaymentProcessedEvent(
+                payment.getCorrelationId(),
+                "COMPLETED"
+        );
+
+        String eventJson = null;
         try {
-            paymentJson = OBJECT_MAPPER.writeValueAsString(payment);
+            eventJson = OBJECT_MAPPER.writeValueAsString(event);
         } catch (JsonProcessingException e) {
-            log.error("Error converting Payment to JSON.", e);
+            log.error("Error converting PaymentProcessedEvent to JSON.", e);
             throw new RuntimeException(e);
         }
 
-        log.debug(String.format("Sending payment %s", paymentJson));
-        amqpTemplate.convertAndSend("payments", paymentJson);
+        log.debug(String.format("Sending payment event %s", eventJson));
+        amqpTemplate.convertAndSend(fanoutExchange.getName(), "", eventJson);
 
     }
 

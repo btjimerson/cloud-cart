@@ -35,8 +35,8 @@ def checkout(l):
     }
 )
 
-def paymentHistory(l):
-    l.client.get("/payments")
+def orderHistory(l):
+    l.client.get("/order-history")
 
 class UserBehavior(TaskSet):
 
@@ -48,7 +48,7 @@ class UserBehavior(TaskSet):
         addToCart: 3,
         viewCart: 3,
         checkout: 2,
-        paymentHistory: 2}
+        orderHistory: 2}
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]

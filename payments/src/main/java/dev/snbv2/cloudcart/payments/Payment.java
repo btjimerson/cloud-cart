@@ -20,27 +20,14 @@ public class Payment {
     private BigDecimal amount;
     private String currency;
     private String description;
+    private String correlationId;
 
-    /**
-     * Constructs an empty Payment instance.
-     */
     public Payment() {
 
     }
 
-    /**
-     * Constructs a Payment with the specified card and transaction details.
-     *
-     * @param cardNumber the credit card number
-     * @param cvc the card verification code
-     * @param expirationMonth the card expiration month
-     * @param expirationYear the card expiration year
-     * @param amount the payment amount
-     * @param currency the currency code for the payment
-     * @param description a description of the payment
-     */
     public Payment(String cardNumber, String cvc, Integer expirationMonth, Integer expirationYear, BigDecimal amount,
-            String currency, String description) {
+            String currency, String description, String correlationId) {
         this.cardNumber = cardNumber;
         this.cvc = cvc;
         this.expirationMonth = expirationMonth;
@@ -48,6 +35,7 @@ public class Payment {
         this.amount = amount;
         this.currency = currency;
         this.description = description;
+        this.correlationId = correlationId;
     }
 
     /**

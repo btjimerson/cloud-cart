@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +27,9 @@ public class OrderControllerTests {
 
     @Autowired
     WebApplicationContext context;
+
+    @MockBean
+    OrderMessageService orderMessageService;
 
     MockMvc mvc;
 
@@ -52,7 +56,8 @@ public class OrderControllerTests {
             "\"state\": \"State\"," +
             "\"zipCode\": \"Zip code\"," +
             "\"amount\": \"101.55\"," +
-            "\"catalogItemId\": \"100\"" +
+            "\"catalogItemId\": \"100\"," +
+            "\"correlationId\": \"test-correlation-id\"" +
             "}";
 
         mvc.perform(post("/order")
@@ -60,7 +65,8 @@ public class OrderControllerTests {
             .content(order))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty());
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.correlationId").value("test-correlation-id"));
     }
 
     @Test
@@ -73,7 +79,8 @@ public class OrderControllerTests {
             "\"state\": \"IL\"," +
             "\"zipCode\": \"62701\"," +
             "\"amount\": \"49.99\"," +
-            "\"catalogItemId\": \"200\"" +
+            "\"catalogItemId\": \"200\"," +
+            "\"correlationId\": \"corr-123\"" +
             "}";
 
         MvcResult result = mvc.perform(post("/order")

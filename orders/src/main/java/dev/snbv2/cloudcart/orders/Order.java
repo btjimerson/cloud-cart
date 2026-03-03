@@ -35,6 +35,7 @@ public class Order {
     private String zipCode;
     private BigDecimal amount;
     private Integer catalogItemId;
+    private String correlationId;
 
     /**
      * Default no-argument constructor required by JPA.
@@ -55,9 +56,10 @@ public class Order {
      * @param zipCode the shipping zip code
      * @param amount the order total amount
      * @param catalogItemId the ID of the catalog item ordered
+     * @param correlationId the correlation ID for event choreography
      */
     public Order(Integer id, String firstName, String lastName, String address, String address2, String city, String state,
-            String zipCode, BigDecimal amount, Integer catalogItemId) {
+            String zipCode, BigDecimal amount, Integer catalogItemId, String correlationId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,6 +70,7 @@ public class Order {
         this.zipCode = zipCode;
         this.amount = amount;
         this.catalogItemId = catalogItemId;
+        this.correlationId = correlationId;
     }
 
     /**

@@ -1,4 +1,4 @@
-SERVICES := catalog frontend orders payment-history payments
+SERVICES := catalog frontend orders order-history payments
 
 .DEFAULT_GOAL := help
 

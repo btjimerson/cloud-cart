@@ -58,16 +58,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-history
+  name: order-history
   labels:
-    app: payment-history
-    service: payment-history
+    app: order-history
+    service: order-history
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: payment-history
+    app: order-history
 ---
 apiVersion: v1
 kind: Service
@@ -248,29 +248,30 @@ spec:
         ports:
         - containerPort: 8080
         env:
-        
+        - name: RABBITMQ_HOST
+          value: rabbitmq
         - name: SPRING_PROFILES_ACTIVE
           value: h2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-history
+  name: order-history
   labels:
-    app: payment-history
+    app: order-history
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment-history
+      app: order-history
   template:
     metadata:
       labels:
-        app: payment-history
+        app: order-history
     spec:
       containers:
-      - name: payment-history
-        image: ghcr.io/btjimerson/cloud-cart-payment-history:latest
+      - name: order-history
+        image: ghcr.io/btjimerson/cloud-cart-order-history:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

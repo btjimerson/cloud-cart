@@ -20,28 +20,14 @@ public class Payment {
     private BigDecimal amount;
     private String currency;
     private String description;
+    private String correlationId;
 
-    /**
-     * Constructs an empty payment.
-     */
     public Payment() {
 
     }
 
-    /**
-     * Constructs a payment with the specified properties.
-     *
-     * @param id the unique identifier of the payment
-     * @param cardNumber the credit card number
-     * @param cvc the card verification code
-     * @param expirationMonth the card expiration month
-     * @param expirationYear the card expiration year
-     * @param amount the payment amount
-     * @param currency the currency code
-     * @param description a description of the payment
-     */
     public Payment(Integer id, String cardNumber, String cvc, Integer expirationMonth, Integer expirationYear, BigDecimal amount,
-            String currency, String description) {
+            String currency, String description, String correlationId) {
         this.id = id;
         this.cardNumber = cardNumber;
         this.cvc = cvc;
@@ -50,6 +36,7 @@ public class Payment {
         this.amount = amount;
         this.currency = currency;
         this.description = description;
+        this.correlationId = correlationId;
     }
 
     /**

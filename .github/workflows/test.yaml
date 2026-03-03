@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [catalog, frontend, orders, payment-history, payments]
+        service: [catalog, frontend, orders, order-history, payments]
       fail-fast: false
     steps:
     - name: Check out repository

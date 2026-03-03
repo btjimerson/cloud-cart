@@ -20,8 +20,8 @@ jobs:
             image: cloud-cart-frontend
           - service: orders
             image: cloud-cart-orders
-          - service: payment-history
-            image: cloud-cart-payment-history
+          - service: order-history
+            image: cloud-cart-order-history
           - service: payments
             image: cloud-cart-payments
           - service: loadgenerator

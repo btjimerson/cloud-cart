@@ -2,7 +2,7 @@
 
 A microservices-based e-commerce demo application built with Spring Boot.
 
-CloudCart demonstrates common microservice architecture patterns including RESTful communication, database-per-service design, and loose coupling through messaging. It consists of five services: a product catalog, order management, payment processing via Stripe, payment history tracking via RabbitMQ, and a web frontend.
+CloudCart demonstrates common microservice architecture patterns including RESTful communication, database-per-service design, and event choreography through pub/sub messaging. It consists of five services: a product catalog, order management, payment processing via Stripe, order history tracking via RabbitMQ fanout exchanges, and a web frontend.
 
 ![Cloud Cart Architecture](images/cloud-cart-architecture.png)
 
@@ -22,7 +22,8 @@ CloudCart was built to demonstrate microservice constructs such as:
 - Independent Spring Boot services with separate concerns
 - RESTful clients and servers
 - Database-per-microservice design (H2 embedded databases)
-- Loose coupling through RabbitMQ messaging
+- Event choreography through RabbitMQ fanout exchanges (pub/sub)
+- Correlation IDs for linking events across services
 - Payment processing with the Stripe API
 
 ### Architecture
@@ -32,12 +33,21 @@ The application is composed of five microservices managed as a Maven multi-modul
 | Service | Description |
 |---|---|
 | [catalog](catalog) | Product catalog with 50 seeded items, backed by H2 |
-| [orders](orders) | Order management, backed by H2 |
-| [payments](payments) | Payment processing via the Stripe API, publishes to RabbitMQ |
-| [payment-history](payment-history) | Consumes payment messages from RabbitMQ, stores in H2 |
+| [orders](orders) | Order management, backed by H2. Publishes `OrderPlacedEvent` to RabbitMQ |
+| [payments](payments) | Payment processing via the Stripe API, publishes `PaymentProcessedEvent` to RabbitMQ |
+| [order-history](order-history) | Subscribes to both order and payment events via RabbitMQ, correlates by correlation ID, stores in H2 |
 | [frontend](frontend) | Web UI and REST API gateway using Thymeleaf and RestClient |
 
 A [Locust-based load generator](loadgenerator) is also included for testing telemetry and scaling.
+
+### Event Choreography
+
+When an order is placed, the frontend generates a correlation ID (UUID) and passes it to both the payments and orders services. Each service publishes a domain event to its own RabbitMQ **fanout exchange**:
+
+- **orders exchange** - `OrderPlacedEvent` (correlationId, purchaseDate, purchaseAmount, numberOfItems, orderStatus)
+- **payments exchange** - `PaymentProcessedEvent` (correlationId, paymentStatus)
+
+The order-history service subscribes to both exchanges and correlates events by their shared correlation ID using an upsert pattern. Because fanout exchanges broadcast to all bound queues, additional consumers can subscribe without modifying the publishers.
 
 ## Install
 
@@ -45,7 +55,7 @@ A [Locust-based load generator](loadgenerator) is also included for testing tele
 
 - Java 21+
 - A [Stripe](https://dashboard.stripe.com/register) developer account (free) for payment processing
-- RabbitMQ (required by the `payments` and `payment-history` services)
+- RabbitMQ (required by the `payments`, `orders`, and `order-history` services)
 - Docker and Docker Compose (optional, for containerized deployment)
 - A Kubernetes cluster (optional, for Kubernetes deployment)
 
@@ -134,7 +144,7 @@ kubectl apply -n cloud-cart -f ./manifests/cloud-cart.yaml
 
 Run each service individually with Maven:
 
-1. Install and start a RabbitMQ instance. Set the `RABBITMQ_HOST` environment variable to its hostname for the `payments` and `payment-history` services.
+1. Install and start a RabbitMQ instance. Set the `RABBITMQ_HOST` environment variable to its hostname for the `payments`, `orders`, and `order-history` services.
 2. Set the `STRIPE_API_KEY` environment variable for the `payments` service.
 3. Start each service:
 
@@ -164,8 +174,8 @@ The frontend service exposes REST endpoints under `/api`:
 | `GET` | `/api/catalog` | List all catalog items |
 | `GET` | `/api/catalog/{id}` | Get a catalog item by ID |
 | `POST` | `/api/order` | Place an order |
-| `GET` | `/api/payments` | List all payments |
-| `GET` | `/api/payments/{id}` | Get a payment by ID |
+| `GET` | `/api/order-history` | List all order history records |
+| `GET` | `/api/order-history/{id}` | Get an order history record by ID |
 | `GET` | `/api/version` | Get the application version |
 
 Full API documentation is available on [Postman](https://documenter.getpostman.com/view/1749839/UVyxQtit).

@@ -22,7 +22,7 @@ public class PaymentServiceTests {
     @Test
     public void testSuccessfulCard() {
 
-        Payment payment = new Payment("5555555555554444", "111", 12, 28, BigDecimal.valueOf(102.25), "usd", "Test payment");
+        Payment payment = new Payment("5555555555554444", "111", 12, 28, BigDecimal.valueOf(102.25), "usd", "Test payment", null);
 
         String result = null;
         try {
@@ -37,7 +37,7 @@ public class PaymentServiceTests {
     @Test
     public void testCardDeclined() {
 
-        Payment payment = new Payment("4000000000000002", "111", 12, 28, BigDecimal.valueOf(102.25), "usd", "Test payment");
+        Payment payment = new Payment("4000000000000002", "111", 12, 28, BigDecimal.valueOf(102.25), "usd", "Test payment", null);
         Assertions.assertThrows(RuntimeException.class, () -> {paymentService.processPayment(payment);});
     }
 }

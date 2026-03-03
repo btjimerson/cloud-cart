@@ -1,21 +1,20 @@
 package dev.snbv2.cloudcart.orders;
 
+import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
-/**
- * Entry point for the Orders Spring Boot application.
- */
 @SpringBootApplication
 public class OrdersApplication {
 
-	/**
-	 * Starts the Orders application.
-	 *
-	 * @param args command-line arguments passed to the application
-	 */
 	public static void main(String[] args) {
 		SpringApplication.run(OrdersApplication.class, args);
+	}
+
+	@Bean
+	public FanoutExchange ordersExchange() {
+		return new FanoutExchange("orders");
 	}
 
 }

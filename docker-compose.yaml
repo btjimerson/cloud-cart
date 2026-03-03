@@ -12,6 +12,10 @@ services:
       dockerfile: orders/Dockerfile
     ports:
       - "8082:8080"
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBITMQ_HOST: rabbitmq
 
   rabbitmq:
     image: rabbitmq:3
@@ -30,10 +34,10 @@ services:
       STRIPE_API_KEY: ${STRIPE_API_KEY}
       RABBITMQ_HOST: rabbitmq
 
-  payment-history:
+  order-history:
     build:
       context: .
-      dockerfile: payment-history/Dockerfile
+      dockerfile: order-history/Dockerfile
     ports:
       - "8084:8080"
     depends_on:
@@ -51,12 +55,12 @@ services:
       - catalog
       - orders
       - payments
-      - payment-history
+      - order-history
     environment:
       endpoint.catalog: http://catalog:8080
       endpoint.orders: http://orders:8080
       endpoint.payments: http://payments:8080
-      endpoint.payment-history: http://payment-history:8080
+      endpoint.order-history: http://order-history:8080
 
   loadgenerator:
     build: ./loadgenerator

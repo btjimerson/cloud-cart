@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -18,10 +19,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestClient;
 
-/**
- * Spring MVC controller that handles web UI requests for browsing the catalog,
- * managing the shopping cart, placing orders, and viewing payment history.
- */
 @CommonsLog
 @Controller
 public class FrontendController {
@@ -35,51 +32,29 @@ public class FrontendController {
     @Value("${endpoint.payments}")
     private String paymentsEndpoint;
 
-    @Value("${endpoint.payment-history}")
-    private String paymentHistoryEndpoint;
+    @Value("${endpoint.order-history}")
+    private String orderHistoryEndpoint;
 
     @Value("${APP_VERSION:}")
     private String appVersion;
 
     private final RestClient restClient;
 
-    /**
-     * Constructs a FrontendController with the given RestClient.
-     *
-     * @param restClient the RestClient used to communicate with backend services
-     */
     public FrontendController(RestClient restClient) {
         this.restClient = restClient;
     }
 
-    /**
-     * Populates the application version model attribute for every request.
-     *
-     * @param model the Spring MVC model
-     */
     @ModelAttribute
     public void populateAppVersion(Model model) {
         log.debug(String.format("Setting app version attribute to [%s]", appVersion));
         model.addAttribute("appVersion", appVersion);
     }
 
-    /**
-     * Renders the index (home) page.
-     *
-     * @return the index view name
-     */
     @GetMapping({ "/", "/index" })
     public String index() {
         return "index";
     }
 
-    /**
-     * Retrieves a single catalog item by its identifier and displays its details.
-     *
-     * @param id the catalog item identifier
-     * @param model the Spring MVC model
-     * @return the item details view name
-     */
     @GetMapping("/item/{id}")
     public String getCatalogItem(@PathVariable("id") Long id, Model model) {
 
@@ -94,12 +69,6 @@ public class FrontendController {
         return "itemDetails";
     }
 
-    /**
-     * Retrieves all catalog items from the catalog service and displays them.
-     *
-     * @param model the Spring MVC model
-     * @return the catalog view name
-     */
     @GetMapping("/catalog")
     public String getAllCatalogItems(Model model) {
 
@@ -112,14 +81,6 @@ public class FrontendController {
         return "catalog";
     }
 
-    /**
-     * Adds a catalog item to the shopping cart stored in the user's session.
-     *
-     * @param id the catalog item identifier to add
-     * @param model the Spring MVC model
-     * @param session the HTTP session containing the cart
-     * @return the catalog view name
-     */
     @GetMapping("/cart/{id}")
     public String addToCart(@PathVariable("id") Long id, Model model, HttpSession session) {
 
@@ -144,13 +105,6 @@ public class FrontendController {
         return "catalog";
     }
 
-    /**
-     * Displays the checkout page with the current cart contents and order total.
-     *
-     * @param model the Spring MVC model
-     * @param session the HTTP session containing the cart
-     * @return the checkout view name
-     */
     @GetMapping("/checkout")
     public String checkout(Model model, HttpSession session) {
 
@@ -163,22 +117,17 @@ public class FrontendController {
         return "checkout";
     }
 
-    /**
-     * Processes the submitted order by sending payment and persisting the order summary.
-     *
-     * @param order the order submitted from the checkout form
-     * @param model the Spring MVC model
-     * @param session the HTTP session containing the cart
-     * @return the order result view name
-     */
     @PostMapping("/order")
     public String placeOrder(Order order, Model model, HttpSession session) {
 
         log.debug(String.format("Order being placed = [%s]", order));
 
+        String correlationId = UUID.randomUUID().toString();
+
         order.getPayment().setCurrency("usd");
         order.getPayment().setAmount(this.getCartTotal(session));
         order.getPayment().setDescription(String.format("Order placed on %s", Instant.now()));
+        order.getPayment().setCorrelationId(correlationId);
 
         String result = restClient.post()
                 .uri(paymentsEndpoint + "/payment")
@@ -187,6 +136,7 @@ public class FrontendController {
                 .body(String.class);
 
         OrderSummary orderSummary = new OrderSummary();
+        orderSummary.setCorrelationId(correlationId);
         orderSummary.setAddress(order.getBillingAddress().getAddress());
         orderSummary.setAddress2(order.getBillingAddress().getAddress2());
         orderSummary.setAmount(order.getPayment().getAmount());
@@ -205,64 +155,51 @@ public class FrontendController {
 
         log.debug(String.format("Result of order = [%s]", savedOrder));
 
+        String formattedDate = Instant.now()
+                .atZone(java.time.ZoneId.systemDefault())
+                .format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a"));
+        Integer orderId = savedOrder != null ? savedOrder.getId() : null;
+
         if ("succeeded".equalsIgnoreCase(result)) {
-            model.addAttribute("result", "Your order was successfully placed.");
+            model.addAttribute("result", String.format(
+                    "Payment for order %s was successful on %s.", orderId, formattedDate));
             session.removeAttribute("cart");
         } else {
-            model.addAttribute("result", "There was an error placing your order.  " +
-                    "Please try again later.  The error was " + result);
+            model.addAttribute("result", String.format(
+                    "Payment for order %s was %s on %s.", orderId, result, formattedDate));
         }
 
         model.addAttribute("order", order);
         return "orderResult";
     }
 
-    /**
-     * Retrieves all payments from the payment history service and displays them.
-     *
-     * @param model the Spring MVC model
-     * @return the payments view name
-     */
-    @GetMapping("/payments")
-    public String getAllPayments(Model model) {
+    @GetMapping("/order-history")
+    public String getAllOrderHistory(Model model) {
 
-        Payment[] payments = restClient.get()
-                .uri(paymentHistoryEndpoint + "/payments")
+        OrderHistoryRecord[] records = restClient.get()
+                .uri(orderHistoryEndpoint + "/order-history")
                 .retrieve()
-                .body(Payment[].class);
-        if (payments != null) {
-            log.debug(String.format("All payments found = [%s]", Arrays.toString(payments)));
+                .body(OrderHistoryRecord[].class);
+        if (records != null) {
+            log.debug(String.format("All order history found = [%s]", Arrays.toString(records)));
         }
-        model.addAttribute("payments", payments);
-        return "payments";
+        model.addAttribute("records", records);
+        return "orderHistory";
     }
 
-    /**
-     * Retrieves a single payment by its identifier and displays its details.
-     *
-     * @param id the payment identifier
-     * @param model the Spring MVC model
-     * @return the payment details view name
-     */
-    @GetMapping("/payment/{id}")
-    public String getPaymentById(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/order-history/{id}")
+    public String getOrderHistoryById(@PathVariable("id") Long id, Model model) {
 
-        Payment payment = restClient.get()
-                .uri(paymentHistoryEndpoint + "/payments/{id}", id)
+        OrderHistoryRecord record = restClient.get()
+                .uri(orderHistoryEndpoint + "/order-history/{id}", id)
                 .retrieve()
-                .body(Payment.class);
+                .body(OrderHistoryRecord.class);
 
-        log.debug(String.format("Found payment [%s].", payment));
-        model.addAttribute("payment", payment);
-        return "paymentDetails";
+        log.debug(String.format("Found order history [%s].", record));
+        model.addAttribute("record", record);
+        return "orderHistoryDetails";
     }
 
-    /**
-     * Retrieves the shopping cart from the session, creating one if it does not exist.
-     *
-     * @param session the HTTP session
-     * @return the list of catalog items in the cart
-     */
     private List<CatalogItem> getCart(HttpSession session) {
         if (session.getAttribute("cart") == null) {
             session.setAttribute("cart", new ArrayList<CatalogItem>());
@@ -274,12 +211,6 @@ public class FrontendController {
         return cart;
     }
 
-    /**
-     * Calculates the total price of all items in the shopping cart.
-     *
-     * @param session the HTTP session containing the cart
-     * @return the total amount of all items in the cart
-     */
     private BigDecimal getCartTotal(HttpSession session) {
 
         List<CatalogItem> cart = this.getCart(session);

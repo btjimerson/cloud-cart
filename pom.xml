@@ -19,7 +19,7 @@
 		<module>catalog</module>
 		<module>frontend</module>
 		<module>orders</module>
-		<module>payment-history</module>
+		<module>order-history</module>
 		<module>payments</module>
 	</modules>
 

@@ -80,13 +80,13 @@ public class FrontendControllerTests {
     }
 
     @Test
-    void testGetAllPayments() throws Exception {
-        server.expect(requestTo("http://payment-history:8080/payments"))
+    void testGetAllOrderHistory() throws Exception {
+        server.expect(requestTo("http://order-history:8080/order-history"))
             .andRespond(withSuccess("[]", MediaType.APPLICATION_JSON));
 
-        mvc.perform(get("/payments"))
+        mvc.perform(get("/order-history"))
             .andExpect(status().isOk())
-            .andExpect(view().name("payments"))
-            .andExpect(model().attributeExists("payments"));
+            .andExpect(view().name("orderHistory"))
+            .andExpect(model().attributeExists("records"));
     }
 }

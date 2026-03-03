@@ -25,6 +25,7 @@ public class OrderSummary {
     private String zipCode;
     private BigDecimal amount;
     private String result;
+    private String correlationId;
 
     private List<CatalogItem> catalogItems;
 

@@ -32,7 +32,7 @@ Every Java service includes a Docker `HEALTHCHECK` that polls its Spring Boot Ac
 | Catalog | http://localhost:8081 |
 | Orders | http://localhost:8082 |
 | Payments | http://localhost:8083 |
-| Payment History | http://localhost:8084 |
+| Order History | http://localhost:8084 |
 | RabbitMQ | localhost:5672 |
 
 ## 2. Architecture Overview
@@ -42,9 +42,10 @@ Open http://localhost:8080 in a browser. The home page renders a live architectu
 **Talking points:**
 
 - Five independently deployable Spring Boot services
-- Database-per-service pattern -- catalog, orders, and payment-history each own an H2 database
+- Database-per-service pattern -- catalog, orders, and order-history each own an H2 database
 - Synchronous communication via REST (frontend to backend services)
-- Asynchronous communication via RabbitMQ (payments to payment-history)
+- Asynchronous communication via RabbitMQ fanout exchanges (orders and payments publish events, order-history subscribes)
+- Event choreography -- each service publishes its own domain event, and the order-history service correlates them by a shared correlation ID
 - External integration with the Stripe API for payment processing
 
 ## 3. Browse the Product Catalog
@@ -93,28 +94,31 @@ curl http://localhost:8080/api/catalog/100 | jq
 - Client-side form validation prevents incomplete submissions
 - On submit, the frontend orchestrates calls to multiple backend services
 
-## 5. Payment Processing Flow
+## 5. Event Choreography Flow
 
 This is the most architecturally interesting flow in the application. Walk through what happened when the order was placed:
 
-1. **Frontend** sent the payment details to the **payments** service via REST
-2. **Payments** service created a Stripe Token and Charge using the Stripe API
-3. **Payments** service published the payment record to a RabbitMQ queue (`payments`)
-4. **Payment-history** service consumed the message from RabbitMQ and persisted it to its own H2 database
-5. **Frontend** received the charge status, created an order in the **orders** service, and cleared the cart
+1. **Frontend** generated a correlation ID (UUID) and passed it to both backend calls
+2. **Frontend** sent the payment details (with correlation ID) to the **payments** service via REST
+3. **Payments** service created a Stripe Token and Charge using the Stripe API
+4. **Payments** service published a `PaymentProcessedEvent` (correlationId, paymentStatus) to the `payments` fanout exchange
+5. **Frontend** sent the order details (with the same correlation ID) to the **orders** service via REST
+6. **Orders** service published an `OrderPlacedEvent` (correlationId, purchaseDate, purchaseAmount, numberOfItems, orderStatus) to the `orders` fanout exchange
+7. **Order-history** service received both events from its anonymous queues bound to each exchange, and correlated them by the shared correlation ID into a single record
 
 **Demonstrate the result:**
 
-1. Click **View Payment History** from the home page (or navigate to http://localhost:8080/payments)
-2. Click on a payment to see its details
-3. The payment-history service received this data asynchronously -- it has no direct dependency on the payments service
+1. Click **View Order History** from the home page (or navigate to http://localhost:8080/order-history)
+2. Click on a record to see its details -- both order and payment fields are populated
+3. The order-history service received this data asynchronously -- it has no direct dependency on either the orders or payments services
 
 **Talking points:**
 
-- Synchronous REST for request-response flows (payment processing)
-- Asynchronous messaging for event-driven flows (payment history recording)
-- The payments and payment-history services are loosely coupled through RabbitMQ
-- If payment-history is temporarily down, messages queue in RabbitMQ and are delivered when it recovers
+- Synchronous REST for request-response flows (payment processing, order creation)
+- Asynchronous pub/sub messaging for event-driven flows (order history recording)
+- Fanout exchanges broadcast to all bound queues -- additional consumers can subscribe without changing publishers
+- Correlation IDs tie events from different services together without coupling them
+- If order-history is temporarily down, messages queue in RabbitMQ and are delivered when it recovers
 
 ## 6. REST API
 
@@ -127,11 +131,11 @@ curl -s http://localhost:8080/api/catalog | jq '.[0:3]'
 # Get a specific product
 curl -s http://localhost:8080/api/catalog/100 | jq
 
-# View all payments
-curl -s http://localhost:8080/api/payments | jq
+# View all order history
+curl -s http://localhost:8080/api/order-history | jq
 
-# Get a specific payment
-curl -s http://localhost:8080/api/payments/1 | jq
+# Get a specific order history record
+curl -s http://localhost:8080/api/order-history/1 | jq
 
 # Check the application version
 curl -s http://localhost:8080/api/version | jq
@@ -143,7 +147,7 @@ curl -s http://localhost:8080/api/version | jq
 curl -s -X POST http://localhost:8080/api/order \
   -H "Content-Type: application/json" \
   -d '{
-    "catalogItems": [{"id": 100, "name": "Apple AirPods Pro", "amount": 189.99}],
+    "catalogItems": [{"id": 100, "name": "Test Product", "amount": 189.99}],
     "billingAddress": {
       "name": "Jane Doe",
       "address": "123 Main St",
@@ -218,14 +222,14 @@ The load generator uses Locust to simulate users performing weighted actions:
 | Add to cart | 3 | Add a random product to the cart |
 | View cart | 3 | Visit the checkout page |
 | Checkout | 2 | Complete a purchase with a test card |
-| View payment history | 2 | Browse past payments |
+| View order history | 2 | Browse past orders |
 | Visit home page | 1 | View the landing page |
 
 **Talking points:**
 
 - Traffic distribution mirrors realistic user behavior (more browsing than buying)
 - The generator uses Stripe test cards so real charges are never created
-- Watch the payment-history table grow as checkouts complete
+- Watch the order-history table grow as checkouts complete
 - Use actuator metrics (`/actuator/metrics/http.server.requests`) to observe request rates across services
 
 ## 9. Canary Deployments with Kubernetes (Optional)
