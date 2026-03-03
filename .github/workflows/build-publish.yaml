@@ -12,6 +12,7 @@ jobs:
   build-publish:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - service: catalog

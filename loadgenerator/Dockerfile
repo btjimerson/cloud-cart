@@ -1,4 +1,4 @@
-FROM python:3.8-slim as base
+FROM python:3.12-slim as base
 FROM base as builder
 RUN apt-get -qq update
 RUN apt-get install -y --no-install-recommends g++
