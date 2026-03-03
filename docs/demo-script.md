@@ -43,9 +43,10 @@ Open http://localhost:8080 in a browser. The home page renders a live architectu
 
 - Five independently deployable Spring Boot services
 - Database-per-service pattern -- catalog, orders, and order-history each own an H2 database
+- Loose coupling -- services communicate through well-defined REST APIs and asynchronous events, with no shared databases or direct dependencies between backend services
 - Synchronous communication via REST (frontend to backend services)
 - Asynchronous communication via RabbitMQ fanout exchanges (orders and payments publish events, order-history subscribes)
-- Event choreography -- each service publishes its own domain event, and the order-history service correlates them by a shared correlation ID
+- Event choreography -- each service publishes its own domain event, and the order-history service correlates them by a shared correlation ID. No service orchestrates or directs the others.
 - External integration with the Stripe API for payment processing
 
 ## 3. Browse the Product Catalog

@@ -17,13 +17,13 @@ CloudCart demonstrates common microservice architecture patterns including RESTf
 
 ## Background
 
-CloudCart was built to demonstrate microservice constructs such as:
+CloudCart was built to demonstrate microservice constructs and loose coupling patterns such as:
 
 - Independent Spring Boot services with separate concerns
 - RESTful clients and servers
 - Database-per-microservice design (H2 embedded databases)
-- Event choreography through RabbitMQ fanout exchanges (pub/sub)
-- Correlation IDs for linking events across services
+- Event choreography through RabbitMQ fanout exchanges (pub/sub) -- services are fully decoupled; each publishes its own domain event without knowledge of downstream consumers
+- Correlation IDs for linking events across services without direct coupling
 - Payment processing with the Stripe API
 
 ### Architecture
