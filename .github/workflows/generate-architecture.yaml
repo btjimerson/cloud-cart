@@ -1,6 +1,9 @@
 name: generate-architecture
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - '**'
     paths:
       - 'docs/architecture.md'
 permissions:
